@@ -1,4 +1,7 @@
-# language: go
+language: go
+## https://docs.travis-ci.com/user/languages/go/
+## 每种语言都有自己的默认的 install 和 script
+## 如果不指定，就会默认执行命令。失败则失败。
 
 services:
   - docker
@@ -8,3 +11,5 @@ sudo: required
 install:
   - /bin/sh autobuild.sh
 
+script:
+  - echo "done"
