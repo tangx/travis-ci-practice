@@ -3,12 +3,12 @@ language: go
 go:
   - "1.10.x"
   - "1.11.x"
-  - "master"
 
 sudo: required
 
 install:
-  - echo "install"
+  - go build -o hello.bin main.go
 
 script:
-  - echo "script"
+  - ./hello.bin
+
