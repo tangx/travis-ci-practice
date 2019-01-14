@@ -6,5 +6,5 @@ services:
 sudo: required
 
 install:
-  - /bin/sh -c autobuild.sh
+  - /bin/sh autobuild.sh
 
