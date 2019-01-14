@@ -7,7 +7,7 @@ IMAGE=oracle-jdk
 TAG=11.0.1-alpine3.8
 
 USER=${HUB_MAIL}
-PASSWORD=${HUB_PASSWORD}
+PASSWORD=${HUB_PASSWD}
 
 # docker login -u ${HUB_USER} -p ${HUB_PASSWD}
 
