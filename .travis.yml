@@ -9,7 +9,8 @@ services:
 sudo: required
 
 install:
-  - /bin/sh autobuild.sh
+  - /bin/bash autobuild.sh build  
 
 script:
-  - echo "done"
+ - /bin/bash autobuild.sh pull
+  
