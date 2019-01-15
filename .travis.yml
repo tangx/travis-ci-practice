@@ -1,16 +1,15 @@
-language: go
-## https://docs.travis-ci.com/user/languages/go/
-## 每种语言都有自己的默认的 install 和 script
-## 如果不指定，就会默认执行命令。失败则失败。
+# https://docs.travis-ci.com/user/build-stages/share-docker-image/
+dist: trusty # The Ubuntu distribution to use
 
-services:
-  - docker
-
-sudo: required
-
-install:
-  - /bin/bash autobuild.sh build  
-
-script:
- - /bin/bash autobuild.sh pull
-  
+jobs:
+  include:
+    - stage: build docker image
+      script:
+      - echo "$HUB_PASSWD" | docker login -u "$HUB_USER" --password-stdin
+      - docker build -t java-jdk alpine-jdk/
+      - docker images
+      - docker tag java-jdk $HUB_USER/java-jdk
+      - docker push $HUB_USER/java-jdk
+    - stage: test
+      script: docker run --rm $HUB_USER/java-jdk java -version
+    - script: docker run --rm $HUB_USER/java-jdk java -version
